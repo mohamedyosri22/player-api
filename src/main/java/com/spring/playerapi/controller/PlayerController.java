@@ -17,11 +17,6 @@ import com.spring.playerapi.service.PlayerService;
 @RestController
 @RequestMapping("/api")
 public class PlayerController {
-	// http://localhost:8080/playerapi/api/test
-	@GetMapping("/test")
-	public String test() {
-		return "test success";
-	}
 
 	private PlayerService playerService;
 
@@ -34,6 +29,13 @@ public class PlayerController {
 	@GetMapping("/players")
 	public List<Player> getPlayers() {
 		return playerService.getPlayers();
+	}
+	
+	
+	// http://localhost:8080/playerapi/api/test
+	@GetMapping("/test")
+	public String test() {
+		return "test success";
 	}
 
 }
