@@ -54,6 +54,7 @@ public class PlayerDaoImpl implements PlayerDao {
 	}
 
 	@Override
+	@Transactional
 	public void addPlayer(Player player) {
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(player);
