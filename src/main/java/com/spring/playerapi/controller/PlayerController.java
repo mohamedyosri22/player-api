@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.playerapi.exception.PlayerException;
 import com.spring.playerapi.model.Player;
 import com.spring.playerapi.service.PlayerService;
 
@@ -37,7 +38,11 @@ public class PlayerController {
 	// http://localhost:8080/playerapi/api/player?id=2
 	@GetMapping("/player")
 	public Player getPlayerById(@RequestParam int id) {
-		return playerService.getPlayer(id);
+		Player p = playerService.getPlayer(id);
+		if(p == null) {
+			throw new PlayerException("id not found !!");
+		}
+		return p;
 	}
 	
 		
